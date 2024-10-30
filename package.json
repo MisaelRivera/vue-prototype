@@ -19,6 +19,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
-        "@vueform/vueform": "^1.11.0"
+        "@vueform/vueform": "^1.11.0",
+        "notivue": "^2.4.5"
     }
 }

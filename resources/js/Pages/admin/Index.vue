@@ -1,11 +1,18 @@
 <script setup>
     import { Link } from '@inertiajs/vue3';
+    import { Notivue, Notification, push } from 'notivue';
     import PermissionsLayout from '@/Layouts/PermissionsLayout.vue';
+    import useNotifications from '@/composables/useNotifications';
+    const { getMessage } = useNotifications();
     defineProps({
         users: {
             type: Object
         } 
     });
+
+    if (getMessage()) {
+        push.success(getMessage());
+    }
 </script>
 <template>
     <PermissionsLayout>
@@ -34,10 +41,19 @@
                                 class="py-1 px-2 rounded bg-blue-500 text-white cursor-pointer hover:bg-blue-600">
                                 Editar
                             </Link>
+                            <Link 
+                                method="delete"
+                                as="button"
+                                class="py-1 px-2 rounded bg-red-500 text-white cursor-pointer hover:bg-blue-600">
+                                Borrar
+                            </Link>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <Notivue v-slot="item">
+            <Notification :item="item"/>
+        </Notivue>
     </PermissionsLayout>
 </template>

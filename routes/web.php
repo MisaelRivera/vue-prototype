@@ -31,7 +31,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::prefix('/users')->group(function () {
             Route::get('/', 'usersIndex')->name('users.index');
             Route::get('/create', 'usersCreate')->name('users.create');
+            Route::post('/store', 'usersStore')->name('users.store');
             Route::get('/{user}/edit', 'usersEdit')->name('users.edit');
+            Route::get('/{user}/delete', 'usersDestroy')->name('users.delete');
         });
     });
 });

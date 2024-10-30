@@ -1,4 +1,5 @@
 <script setup>
+    import { Link } from '@inertiajs/vue3';
     import AuthenticatedLayout from './AuthenticatedLayout.vue';
 </script>
 <template>
@@ -18,8 +19,8 @@
 
                 <ul class="space-y-2 tracking-wide mt-8">
                     <li>
-                        <a 
-                            href="#" 
+                        <Link 
+                            :href="route('admin.index')" 
                             aria-label="dashboard" 
                             class="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-sky-600 to-cyan-400">
                             <svg 
@@ -31,7 +32,7 @@
                                 <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
                             </svg>
                             <span class="-mr-1 font-medium">Usuarios</span>
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a 

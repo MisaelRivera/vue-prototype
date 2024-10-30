@@ -7,7 +7,10 @@ import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import Vueform from '@vueform/vueform';
 import vueformConfig from './../../vueform.config';
-
+import { createNotivue } from 'notivue';
+import 'notivue/notification.css' // Only needed if using built-in notifications
+import 'notivue/animations.css'
+const notivue = createNotivue(/* options */);
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -20,6 +23,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(notivue)
             .use(Vueform, vueformConfig)
             .use(ZiggyVue)
             .mount(el);
