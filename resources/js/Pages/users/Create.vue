@@ -1,6 +1,6 @@
 <script setup>
     import { ref, onMounted } from 'vue';
-    import { useForm } from '@inertiajs/vue3';
+    import { useForm, Link } from '@inertiajs/vue3';
     import { Notivue, Notification, push } from 'notivue';
     import PermissionsLayout from '@/Layouts/PermissionsLayout.vue';
     const props = defineProps({
@@ -16,7 +16,12 @@
 <template>
     <PermissionsLayout>
         <div class="w-4/12 mx-auto my-4">
-            <h1 class="text-3xl text-slate-700 px-3 py-1">Crear usuario</h1>
+            <h1 class="text-3xl text-slate-700 px-3 py-1">
+                <Link :href="route('admin.index')">
+                    <i class="fas fa-arrow-left"></i>
+                </Link>
+                Crear usuario
+            </h1>
             <Vueform
                 :float-placeholders="false"
                 ref="form$"

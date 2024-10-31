@@ -33,8 +33,19 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/create', 'usersCreate')->name('users.create');
             Route::post('/store', 'usersStore')->name('users.store');
             Route::get('/{user}/edit', 'usersEdit')->name('users.edit');
-            Route::get('/{user}/delete', 'usersDestroy')->name('users.delete');
+            Route::put('/{user}', 'usersUpdate')->name('users.update');
+            Route::delete('/{user}', 'usersDestroy')->name('users.delete');
+            
+            Route::prefix('/roles')->group(function () {
+                Route::get('/', 'rolesIndex')->name('roles.index');
+                Route::get('/create', 'rolesCreate')->name('roles.create');
+                Route::post('/', 'rolesStore')->name('roles.store');
+                Route::get('/{role}/edit', 'rolesEdit')->name('roles.edit');
+                Route::put('/{role}', 'rolesUpdate')->name('roles.update');
+                Route::delete('/{role}', 'rolesDestroy')->name('roles.delete');
+            });
         });
+
     });
 });
 
